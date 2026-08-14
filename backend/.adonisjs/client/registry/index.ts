@@ -54,6 +54,30 @@ const routes = {
     tokens: [{"old":"/api/leaves/:id/status","type":0,"val":"api","end":""},{"old":"/api/leaves/:id/status","type":0,"val":"leaves","end":""},{"old":"/api/leaves/:id/status","type":1,"val":"id","end":""},{"old":"/api/leaves/:id/status","type":0,"val":"status","end":""}],
     types: placeholder as Registry['leaves.update_status']['types'],
   },
+  'auth.register': {
+    methods: ["POST"],
+    pattern: '/api/auth/register',
+    tokens: [{"old":"/api/auth/register","type":0,"val":"api","end":""},{"old":"/api/auth/register","type":0,"val":"auth","end":""},{"old":"/api/auth/register","type":0,"val":"register","end":""}],
+    types: placeholder as Registry['auth.register']['types'],
+  },
+  'auth.login': {
+    methods: ["POST"],
+    pattern: '/api/auth/login',
+    tokens: [{"old":"/api/auth/login","type":0,"val":"api","end":""},{"old":"/api/auth/login","type":0,"val":"auth","end":""},{"old":"/api/auth/login","type":0,"val":"login","end":""}],
+    types: placeholder as Registry['auth.login']['types'],
+  },
+  'auth.me': {
+    methods: ["GET","HEAD"],
+    pattern: '/api/auth/me',
+    tokens: [{"old":"/api/auth/me","type":0,"val":"api","end":""},{"old":"/api/auth/me","type":0,"val":"auth","end":""},{"old":"/api/auth/me","type":0,"val":"me","end":""}],
+    types: placeholder as Registry['auth.me']['types'],
+  },
+  'auth.logout': {
+    methods: ["POST"],
+    pattern: '/api/auth/logout',
+    tokens: [{"old":"/api/auth/logout","type":0,"val":"api","end":""},{"old":"/api/auth/logout","type":0,"val":"auth","end":""},{"old":"/api/auth/logout","type":0,"val":"logout","end":""}],
+    types: placeholder as Registry['auth.logout']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }

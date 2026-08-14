@@ -14,6 +14,7 @@ import { readFileSync } from 'node:fs'
 import { controllers } from '#generated/controllers'
 import { employeeRoutes } from '#modules/employees/routes'
 import { leaveRoutes } from '#modules/leaves/routes'
+import { authRoutes } from '#modules/auth/routes'
 
 // 1. Route untuk menyajikan isi file openapi.json
 router.get('/openapi.json', async ({ response }) => {
@@ -46,3 +47,4 @@ router.get('/docs', async ({ response }) => {
 // Load modul routes
 employeeRoutes()
 leaveRoutes()
+authRoutes()

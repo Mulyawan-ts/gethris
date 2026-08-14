@@ -14,4 +14,10 @@ export interface ApiDefinition {
     store: typeof routes['leaves.store']
     updateStatus: typeof routes['leaves.update_status']
   }
+  auth: {
+    register: typeof routes['auth.register']
+    login: typeof routes['auth.login']
+    me: typeof routes['auth.me']
+    logout: typeof routes['auth.logout']
+  }
 }

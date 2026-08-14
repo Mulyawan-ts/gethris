@@ -103,4 +103,52 @@ export interface Registry {
       errorResponse: unknown
     }
   }
+  'auth.register': {
+    methods: ["POST"]
+    pattern: '/api/auth/register'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'auth.login': {
+    methods: ["POST"]
+    pattern: '/api/auth/login'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'auth.me': {
+    methods: ["GET","HEAD"]
+    pattern: '/api/auth/me'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'auth.logout': {
+    methods: ["POST"]
+    pattern: '/api/auth/logout'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
 }
