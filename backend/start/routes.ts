@@ -9,11 +9,20 @@
 
 import { middleware } from '#start/kernel'
 import router from '@adonisjs/core/services/router'
+import app from '@adonisjs/core/services/app'
+import { readFileSync } from 'node:fs'
 import { controllers } from '#generated/controllers'
 import { employeeRoutes } from '#modules/employees/routes'
 import { leaveRoutes } from '#modules/leaves/routes'
 
-// Route untuk API Documentation (Scalar)
+// 1. Route untuk menyajikan isi file openapi.json
+router.get('/openapi.json', async ({ response }) => {
+  const filePath = app.makePath('public/openapi.json')
+  const fileContent = readFileSync(filePath, 'utf-8')
+  return response.header('Content-Type', 'application/json').send(fileContent)
+})
+
+// 2. Route untuk Scalar UI Reference
 router.get('/docs', async ({ response }) => {
   return response.send(`
     <!doctype html>
