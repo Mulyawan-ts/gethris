@@ -1,4 +1,5 @@
 import router from '@adonisjs/core/services/router'
+import { middleware } from '#start/kernel'
 const LeavesController = () => import('./controllers/leaves_controller.ts')
 
 export function leaveRoutes() {
@@ -14,4 +15,5 @@ export function leaveRoutes() {
       router.patch('/:id/status', [LeavesController, 'updateStatus'])
     })
     .prefix('/api/leaves')
+    .use(middleware.auth()) // add auth
 }
