@@ -6,7 +6,8 @@ export function calculateWorkingDays(startDate: Date | string, endDate: Date | s
 
   while (curDate <= lastDate) {
     const dayOfWeek = curDate.getDay()
-    if (dayOfWeek !== 0 && dayOfWeek !== 6) { // Bukan Minggu (0) & Sabtu (6)
+    if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+      // Bukan Minggu (0) & Sabtu (6)
       count++
     }
     curDate.setDate(curDate.getDate() + 1)
