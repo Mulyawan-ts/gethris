@@ -4,7 +4,7 @@ import { randomBytes } from 'node:crypto'
  * Generates NIP with format: YYYYMM + 4 Unique Characters
  * Example: 202608A1B2
  */
-export function generateNip(joinDate?: string | Date): string {
+export function generateNk(joinDate?: string | Date): string {
   const date = joinDate ? new Date(joinDate) : new Date()
 
   const year = date.getFullYear().toString()
