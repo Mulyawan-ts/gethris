@@ -118,5 +118,19 @@
         }
       }
     }
+  },
+  "components": {
+  "securitySchemes": {
+    "bearerAuth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "OAT"
+    }
   }
+},
+"security": [
+  {
+    "bearerAuth": []
+  }
+]
 }
