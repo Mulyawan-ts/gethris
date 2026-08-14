@@ -21,13 +21,7 @@ export default class LeavesController {
    * Karyawan membuat pengajuan cuti baru
    */
   async store({ request, response }: HttpContext) {
-    const payload = request.only([
-      'employeeId',
-      'leaveType',
-      'startDate',
-      'endDate',
-      'reason',
-    ])
+    const payload = request.only(['employeeId', 'leaveType', 'startDate', 'endDate', 'reason'])
 
     // Status otomatis 'pending' saat pertama kali diajukan
     const leave = await Leave.create({
