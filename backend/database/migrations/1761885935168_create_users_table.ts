@@ -6,9 +6,24 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').notNullable()
+
+      // Relasi opsional ke tabel employees
+      table
+        .integer('employee_id')
+        .unsigned()
+        .nullable()
+        .references('id')
+        .inTable('employees')
+        .onDelete('SET NULL')
+
       table.string('full_name').nullable()
       table.string('email', 254).notNullable().unique()
       table.string('password').notNullable()
+
+      // Role user untuk otorisasi akses
+      table
+        .enum('role', ['admin', 'hr', 'employee'])
+        .defaultTo('employee')
 
       table.timestamp('created_at').notNullable()
       table.timestamp('updated_at').nullable()
