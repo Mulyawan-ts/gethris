@@ -104,9 +104,9 @@ export default defineConfig({
   |
   */
   metaFiles: [{
-      pattern: 'public/**',
-      reloadServer: false,
-    },],
+    pattern: 'public/**',
+    reloadServer: false,
+  },],
 
   hooks: {
     init: [
