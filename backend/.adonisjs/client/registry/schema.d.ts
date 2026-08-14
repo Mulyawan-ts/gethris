@@ -19,6 +19,18 @@ export interface Registry {
       errorResponse: unknown
     }
   }
+  'employees.show': {
+    methods: ["GET","HEAD"]
+    pattern: '/api/employees/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
   'employees.store': {
     methods: ["POST"]
     pattern: '/api/employees'
@@ -26,6 +38,30 @@ export interface Registry {
       body: {}
       paramsTuple: []
       params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'employees.update': {
+    methods: ["PUT"]
+    pattern: '/api/employees/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'employees.destroy': {
+    methods: ["DELETE"]
+    pattern: '/api/employees/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
       query: {}
       response: unknown
       errorResponse: unknown
