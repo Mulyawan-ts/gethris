@@ -1,4 +1,5 @@
 import router from '@adonisjs/core/services/router'
+import { middleware } from '#start/kernel'
 const EmployeesController = () => import('./controllers/employees_controller.js')
 
 export function employeeRoutes() {
@@ -11,4 +12,5 @@ export function employeeRoutes() {
       router.delete('/:id', [EmployeesController, 'destroy'])
     })
     .prefix('/api/employees')
+    .use(middleware.auth()) // use auth
 }
