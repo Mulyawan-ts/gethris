@@ -9,4 +9,9 @@ export interface ApiDefinition {
     update: typeof routes['employees.update']
     destroy: typeof routes['employees.destroy']
   }
+  leaves: {
+    index: typeof routes['leaves.index']
+    store: typeof routes['leaves.store']
+    updateStatus: typeof routes['leaves.update_status']
+  }
 }

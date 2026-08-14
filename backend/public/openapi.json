@@ -1,0 +1,122 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "GET-HRIS API Documentation",
+    "version": "1.0.0",
+    "description": "Dokumentasi API Sistem HRIS untuk Modul Karyawan dan Pengajuan Cuti"
+  },
+  "paths": {
+    "/api/employees": {
+      "get": {
+        "summary": "Mendapatkan semua data karyawan",
+        "tags": ["Employee"],
+        "responses": {
+          "200": { "description": "Berhasil mengambil data karyawan" }
+        }
+      },
+      "post": {
+        "summary": "Menambah karyawan baru",
+        "tags": ["Employee"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "nip": "EMP005",
+                "name": "Budi Santoso",
+                "email": "budi.santoso@company.com",
+                "position": "Software Engineer",
+                "status": "active",
+                "joinDate": "2026-03-01"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Karyawan berhasil dibuat" }
+        }
+      }
+    },
+    "/api/employees/{id}": {
+      "get": {
+        "summary": "Mendapatkan detail data 1 karyawan",
+        "tags": ["Employee"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Berhasil mengambil detail karyawan" }
+        }
+      },
+      "put": {
+        "summary": "Mengubah data karyawan",
+        "tags": ["Employee"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Data karyawan berhasil diperbarui" }
+        }
+      },
+      "delete": {
+        "summary": "Menghapus data karyawan",
+        "tags": ["Employee"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Karyawan berhasil dihapus" }
+        }
+      }
+    },
+    "/api/leaves": {
+      "get": {
+        "summary": "Mendapatkan daftar pengajuan cuti",
+        "tags": ["Leaves"],
+        "responses": {
+          "200": { "description": "Berhasil mengambil data cuti" }
+        }
+      },
+      "post": {
+        "summary": "Mengajukan cuti baru",
+        "tags": ["Leaves"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "employeeId": 1,
+                "leaveType": "Cuti Tahunan",
+                "startDate": "2026-08-20",
+                "endDate": "2026-08-22",
+                "reason": "Liburan Keluarga"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Pengajuan cuti berhasil dibuat" }
+        }
+      }
+    },
+    "/api/leaves/{id}/status": {
+      "patch": {
+        "summary": "Update status persetujuan cuti (Approve / Reject)",
+        "tags": ["Leaves"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "status": "approved"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Status cuti berhasil diperbarui" }
+        }
+      }
+    }
+  }
+}

@@ -67,4 +67,40 @@ export interface Registry {
       errorResponse: unknown
     }
   }
+  'leaves.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/api/leaves'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'leaves.store': {
+    methods: ["POST"]
+    pattern: '/api/leaves'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'leaves.update_status': {
+    methods: ["PATCH"]
+    pattern: '/api/leaves/:id/status'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
 }

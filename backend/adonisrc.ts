@@ -103,7 +103,10 @@ export default defineConfig({
   | the production build.
   |
   */
-  metaFiles: [],
+  metaFiles: [{
+      pattern: 'public/**',
+      reloadServer: false,
+    },],
 
   hooks: {
     init: [

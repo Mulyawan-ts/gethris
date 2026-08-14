@@ -36,6 +36,24 @@ const routes = {
     tokens: [{"old":"/api/employees/:id","type":0,"val":"api","end":""},{"old":"/api/employees/:id","type":0,"val":"employees","end":""},{"old":"/api/employees/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['employees.destroy']['types'],
   },
+  'leaves.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/api/leaves',
+    tokens: [{"old":"/api/leaves","type":0,"val":"api","end":""},{"old":"/api/leaves","type":0,"val":"leaves","end":""}],
+    types: placeholder as Registry['leaves.index']['types'],
+  },
+  'leaves.store': {
+    methods: ["POST"],
+    pattern: '/api/leaves',
+    tokens: [{"old":"/api/leaves","type":0,"val":"api","end":""},{"old":"/api/leaves","type":0,"val":"leaves","end":""}],
+    types: placeholder as Registry['leaves.store']['types'],
+  },
+  'leaves.update_status': {
+    methods: ["PATCH"],
+    pattern: '/api/leaves/:id/status',
+    tokens: [{"old":"/api/leaves/:id/status","type":0,"val":"api","end":""},{"old":"/api/leaves/:id/status","type":0,"val":"leaves","end":""},{"old":"/api/leaves/:id/status","type":1,"val":"id","end":""},{"old":"/api/leaves/:id/status","type":0,"val":"status","end":""}],
+    types: placeholder as Registry['leaves.update_status']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }
