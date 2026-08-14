@@ -120,17 +120,17 @@
     }
   },
   "components": {
-  "securitySchemes": {
-    "bearerAuth": {
-      "type": "http",
-      "scheme": "bearer",
-      "bearerFormat": "OAT"
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "OAT"
+      }
     }
-  }
-},
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ]
 }

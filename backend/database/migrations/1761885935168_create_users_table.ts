@@ -21,9 +21,7 @@ export default class extends BaseSchema {
       table.string('password').notNullable()
 
       // Role user untuk otorisasi akses
-      table
-        .enum('role', ['admin', 'hr', 'employee'])
-        .defaultTo('employee')
+      table.enum('role', ['admin', 'hr', 'employee']).defaultTo('employee')
 
       table.timestamp('created_at').notNullable()
       table.timestamp('updated_at').nullable()
