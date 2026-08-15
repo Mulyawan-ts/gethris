@@ -40,7 +40,7 @@ export default class LeavesController {
     const approvedLeaves = await Leave.query()
       .where('employeeId', payload.employeeId)
       .where('status', 'approved')
-      .whereRaw('strftime("%Y", start_date) = ?', [startDate.year.toString()])
+      .whereRaw("strftime('%Y', start_date) = ?", [startDate.year.toString()])
 
     const usedLeave = approvedLeaves.reduce((total, leave) => {
       const days = leave.endDate.diff(leave.startDate, 'days').days + 1
