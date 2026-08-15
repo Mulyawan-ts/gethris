@@ -1,0 +1,413 @@
+c[ info ] loading hooks...
+[ info ] generating indexes...
+[ info ] codegen: created 5 file(s)
+[ info ] booting application to run tests...
+
+functional / POST /api/leaves (tests\functional\leaves_store.spec.ts)
+  ΓêÜ menolak request tanpa login (88.85ms)
+[05:03:31.532] [31mERROR[39m (9136): [36mselect * from `leaves` where `employee_id` = 4 and `status` = 'approved' and strftime("%Y", start_date) = '2026' - no such column: "%Y" - should this be a string literal in single-quotes?[39m
+    [35mrequest_id[39m: "6c9cd491-320b-4a7f-920c-e92b67fecb98"
+    [35mx-request-id[39m: "6c9cd491-320b-4a7f-920c-e92b67fecb98"
+    err: {
+      "type": "SqliteError",
+      "message": "select * from `leaves` where `employee_id` = 4 and `status` = 'approved' and strftime(\"%Y\", start_date) = '2026' - no such column: \"%Y\" - should this be a string literal in single-quotes?",
+      "stack":
+          SqliteError: select * from `leaves` where `employee_id` = 4 and `status` = 'approved' and strftime("%Y", start_date) = '2026' - no such column: "%Y" - should this be a string literal in single-quotes?
+              at Database.prepare (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\better-sqlite3@13.0.3\node_modules\better-sqlite3\lib\methods\wrappers.js:5:21)
+              at Client_BetterSQLite3._query (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\dialects\better-sqlite3\index.js:42:34)
+              at executeQuery (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\execution\internal\query-executioner.js:37:17)
+              at Client_BetterSQLite3.query (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\client.js:176:12)
+              at C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\execution\transaction.js:380:24
+              at new Promise (<anonymous>)
+              at trxClient.query (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\execution\transaction.js:375:12)
+              at Runner.query (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\execution\runner.js:147:36)
+              at ensureConnectionCallback (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\execution\internal\ensure-connection-callback.js:13:17)
+              at Runner.ensureConnection (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\execution\runner.js:324:20)
+      "code": "SQLITE_ERROR",
+      "status": 500
+    }
+  ├ù berhasil membuat pengajuan cuti dengan payload valid (104.86ms)
+  ΓêÜ menolak payload yang tidak lengkap (validasi) (52.48ms)
+=== HASIL endDate sebelum startDate === 400 {
+  status: 'error',
+  message: 'Tanggal selesai tidak boleh sebelum tanggal mulai',
+  errors: null
+}
+  ΓêÜ menolak jika endDate sebelum startDate (53.76ms)
+=== HASIL overlap === 400 {
+  status: 'error',
+  message: 'Anda sudah memiliki pengajuan cuti pada rentang tanggal ini',
+  errors: null
+}
+  ΓêÜ menolak jika tanggal cuti tumpang tindih dengan pengajuan lain (52.97ms)
+[05:03:31.765] [31mERROR[39m (9136): [36mselect * from `leaves` where `employee_id` = 4 and `status` = 'approved' and strftime("%Y", start_date) = '2026' - no such column: "%Y" - should this be a string literal in single-quotes?[39m
+    [35mrequest_id[39m: "860ca1a9-c23d-415f-a307-9baf7a060410"
+    [35mx-request-id[39m: "860ca1a9-c23d-415f-a307-9baf7a060410"
+    err: {
+      "type": "SqliteError",
+      "message": "select * from `leaves` where `employee_id` = 4 and `status` = 'approved' and strftime(\"%Y\", start_date) = '2026' - no such column: \"%Y\" - should this be a string literal in single-quotes?",
+      "stack":
+          SqliteError: select * from `leaves` where `employee_id` = 4 and `status` = 'approved' and strftime("%Y", start_date) = '2026' - no such column: "%Y" - should this be a string literal in single-quotes?
+              at Database.prepare (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\better-sqlite3@13.0.3\node_modules\better-sqlite3\lib\methods\wrappers.js:5:21)
+              at Client_BetterSQLite3._query (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\dialects\better-sqlite3\index.js:42:34)
+              at executeQuery (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\execution\internal\query-executioner.js:37:17)
+              at Client_BetterSQLite3.query (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\client.js:176:12)
+              at C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\execution\transaction.js:380:24
+              at new Promise (<anonymous>)
+              at trxClient.query (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\execution\transaction.js:375:12)
+              at Runner.query (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\execution\runner.js:147:36)
+              at ensureConnectionCallback (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\execution\internal\ensure-connection-callback.js:13:17)
+              at Runner.ensureConnection (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\execution\runner.js:324:20)
+      "code": "SQLITE_ERROR",
+      "status": 500
+    }
+=== HASIL kuota tidak cukup === 500 {
+  message: 'select * from `leaves` where `employee_id` = 4 and `status` = \'approved\' and strftime("%Y", start_date) = \'2026\' - no such column: "%Y" - should this be a string literal in single-quotes?',
+  name: 'SqliteError',
+  frames: [
+    {
+      functionName: 'Database.prepare',
+      fileName: 'C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/lib/methods/wrappers.js',
+      lineNumber: 5,
+      columnNumber: 21,
+      raw: '    at Database.prepare (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\better-sqlite3@13.0.3\\node_modules\\better-sqlite3\\lib\\methods\\wrappers.js:5:21)',
+      type: 'module',
+      fileType: 'fs',
+      source: [Array]
+    },
+    {
+      functionName: 'Client_BetterSQLite3._query',
+      fileName: 'C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70/node_modules/knex/lib/dialects/better-sqlite3/index.js',
+      lineNumber: 42,
+      columnNumber: 34,
+      raw: '    at Client_BetterSQLite3._query (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\dialects\\better-sqlite3\\index.js:42:34)',
+      type: 'module',
+      fileType: 'fs',
+      source: [Array]
+    },
+    {
+      functionName: 'executeQuery',
+      fileName: 'C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70/node_modules/knex/lib/execution/internal/query-executioner.js',
+      lineNumber: 37,
+      columnNumber: 17,
+      raw: '    at executeQuery (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\internal\\query-executioner.js:37:17)',
+      type: 'module',
+      fileType: 'fs',
+      source: [Array]
+    },
+    {
+      functionName: 'Client_BetterSQLite3.query',
+      fileName: 'C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70/node_modules/knex/lib/client.js',
+      lineNumber: 176,
+      columnNumber: 12,
+      raw: '    at Client_BetterSQLite3.query (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\client.js:176:12)',
+      type: 'module',
+      fileType: 'fs',
+      source: [Array]
+    },
+    {
+      fileName: 'C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70/node_modules/knex/lib/execution/transaction.js',
+      lineNumber: 380,
+      columnNumber: 24,
+      raw: '    at C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\transaction.js:380:24',
+      type: 'module',
+      fileType: 'fs',
+      source: [Array]
+    },
+    {
+      functionName: 'trxClient.query',
+      fileName: 'C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70/node_modules/knex/lib/execution/transaction.js',
+      lineNumber: 375,
+      columnNumber: 12,
+      raw: '    at trxClient.query (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\transaction.js:375:12)',
+      type: 'module',
+      fileType: 'fs',
+      source: [Array]
+    },
+    {
+      functionName: 'Runner.query',
+      fileName: 'C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70/node_modules/knex/lib/execution/runner.js',
+      lineNumber: 147,
+      columnNumber: 36,
+      raw: '    at Runner.query (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\runner.js:147:36)',
+      type: 'module',
+      fileType: 'fs',
+      source: [Array]
+    },
+    {
+      functionName: 'ensureConnectionCallback',
+      fileName: 'C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70/node_modules/knex/lib/execution/internal/ensure-connection-callback.js',
+      lineNumber: 13,
+      columnNumber: 17,
+      raw: '    at ensureConnectionCallback (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\internal\\ensure-connection-callback.js:13:17)',
+      type: 'module',
+      fileType: 'fs',
+      source: [Array]
+    },
+    {
+      functionName: 'Runner.ensureConnection',
+      fileName: 'C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70/node_modules/knex/lib/execution/runner.js',
+      lineNumber: 324,
+      columnNumber: 20,
+      raw: '    at Runner.ensureConnection (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\runner.js:324:20)',
+      type: 'module',
+      fileType: 'fs',
+      source: [Array]
+    }
+  ],
+  code: 'SQLITE_ERROR',
+  stack: 'SqliteError: select * from `leaves` where `employee_id` = 4 and `status` = \'approved\' and strftime("%Y", start_date) = \'2026\' - no such column: "%Y" - should this be a string literal in single-quotes?\n' +
+    '    at Database.prepare (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\better-sqlite3@13.0.3\\node_modules\\better-sqlite3\\lib\\methods\\wrappers.js:5:21)\n' +
+    '    at Client_BetterSQLite3._query (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\dialects\\better-sqlite3\\index.js:42:34)\n' +
+    '    at executeQuery (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\internal\\query-executioner.js:37:17)\n' +
+    '    at Client_BetterSQLite3.query (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\client.js:176:12)\n' +
+    '    at C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\transaction.js:380:24\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at trxClient.query (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\transaction.js:375:12)\n' +
+    '    at Runner.query (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\runner.js:147:36)\n' +
+    '    at ensureConnectionCallback (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\internal\\ensure-connection-callback.js:13:17)\n' +
+    '    at Runner.ensureConnection (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\runner.js:324:20)',
+  raw: { code: 'SQLITE_ERROR', status: 500 }
+}
+  ├ù menolak jika sisa kuota cuti tahun berjalan tidak cukup (66.28ms)
+[05:03:31.825] [31mERROR[39m (9136): [36mselect * from `leaves` where `employee_id` = 4 and `status` = 'approved' and strftime("%Y", start_date) = '2026' - no such column: "%Y" - should this be a string literal in single-quotes?[39m
+    [35mrequest_id[39m: "a95847c1-3497-4d23-a094-c81e3918e6c5"
+    [35mx-request-id[39m: "a95847c1-3497-4d23-a094-c81e3918e6c5"
+    err: {
+      "type": "SqliteError",
+      "message": "select * from `leaves` where `employee_id` = 4 and `status` = 'approved' and strftime(\"%Y\", start_date) = '2026' - no such column: \"%Y\" - should this be a string literal in single-quotes?",
+      "stack":
+          SqliteError: select * from `leaves` where `employee_id` = 4 and `status` = 'approved' and strftime("%Y", start_date) = '2026' - no such column: "%Y" - should this be a string literal in single-quotes?
+              at Database.prepare (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\better-sqlite3@13.0.3\node_modules\better-sqlite3\lib\methods\wrappers.js:5:21)
+              at Client_BetterSQLite3._query (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\dialects\better-sqlite3\index.js:42:34)
+              at executeQuery (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\execution\internal\query-executioner.js:37:17)
+              at Client_BetterSQLite3.query (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\client.js:176:12)
+              at C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\execution\transaction.js:380:24
+              at new Promise (<anonymous>)
+              at trxClient.query (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\execution\transaction.js:375:12)
+              at Runner.query (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\execution\runner.js:147:36)
+              at ensureConnectionCallback (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\execution\internal\ensure-connection-callback.js:13:17)
+              at Runner.ensureConnection (C:\Users\ADMIN\Documents\portfolio-frontend\gethris\backend\node_modules\.pnpm\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\node_modules\knex\lib\execution\runner.js:324:20)
+      "code": "SQLITE_ERROR",
+      "status": 500
+    }
+=== HASIL sisa kuota cukup === 500 {
+  message: 'select * from `leaves` where `employee_id` = 4 and `status` = \'approved\' and strftime("%Y", start_date) = \'2026\' - no such column: "%Y" - should this be a string literal in single-quotes?',
+  name: 'SqliteError',
+  frames: [
+    {
+      functionName: 'Database.prepare',
+      fileName: 'C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/lib/methods/wrappers.js',
+      lineNumber: 5,
+      columnNumber: 21,
+      raw: '    at Database.prepare (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\better-sqlite3@13.0.3\\node_modules\\better-sqlite3\\lib\\methods\\wrappers.js:5:21)',
+      type: 'module',
+      fileType: 'fs',
+      source: [Array]
+    },
+    {
+      functionName: 'Client_BetterSQLite3._query',
+      fileName: 'C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70/node_modules/knex/lib/dialects/better-sqlite3/index.js',
+      lineNumber: 42,
+      columnNumber: 34,
+      raw: '    at Client_BetterSQLite3._query (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\dialects\\better-sqlite3\\index.js:42:34)',
+      type: 'module',
+      fileType: 'fs',
+      source: [Array]
+    },
+    {
+      functionName: 'executeQuery',
+      fileName: 'C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70/node_modules/knex/lib/execution/internal/query-executioner.js',
+      lineNumber: 37,
+      columnNumber: 17,
+      raw: '    at executeQuery (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\internal\\query-executioner.js:37:17)',
+      type: 'module',
+      fileType: 'fs',
+      source: [Array]
+    },
+    {
+      functionName: 'Client_BetterSQLite3.query',
+      fileName: 'C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70/node_modules/knex/lib/client.js',
+      lineNumber: 176,
+      columnNumber: 12,
+      raw: '    at Client_BetterSQLite3.query (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\client.js:176:12)',
+      type: 'module',
+      fileType: 'fs',
+      source: [Array]
+    },
+    {
+      fileName: 'C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70/node_modules/knex/lib/execution/transaction.js',
+      lineNumber: 380,
+      columnNumber: 24,
+      raw: '    at C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\transaction.js:380:24',
+      type: 'module',
+      fileType: 'fs',
+      source: [Array]
+    },
+    {
+      functionName: 'trxClient.query',
+      fileName: 'C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70/node_modules/knex/lib/execution/transaction.js',
+      lineNumber: 375,
+      columnNumber: 12,
+      raw: '    at trxClient.query (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\transaction.js:375:12)',
+      type: 'module',
+      fileType: 'fs',
+      source: [Array]
+    },
+    {
+      functionName: 'Runner.query',
+      fileName: 'C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70/node_modules/knex/lib/execution/runner.js',
+      lineNumber: 147,
+      columnNumber: 36,
+      raw: '    at Runner.query (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\runner.js:147:36)',
+      type: 'module',
+      fileType: 'fs',
+      source: [Array]
+    },
+    {
+      functionName: 'ensureConnectionCallback',
+      fileName: 'C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70/node_modules/knex/lib/execution/internal/ensure-connection-callback.js',
+      lineNumber: 13,
+      columnNumber: 17,
+      raw: '    at ensureConnectionCallback (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\internal\\ensure-connection-callback.js:13:17)',
+      type: 'module',
+      fileType: 'fs',
+      source: [Array]
+    },
+    {
+      functionName: 'Runner.ensureConnection',
+      fileName: 'C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70/node_modules/knex/lib/execution/runner.js',
+      lineNumber: 324,
+      columnNumber: 20,
+      raw: '    at Runner.ensureConnection (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\runner.js:324:20)',
+      type: 'module',
+      fileType: 'fs',
+      source: [Array]
+    }
+  ],
+  code: 'SQLITE_ERROR',
+  stack: 'SqliteError: select * from `leaves` where `employee_id` = 4 and `status` = \'approved\' and strftime("%Y", start_date) = \'2026\' - no such column: "%Y" - should this be a string literal in single-quotes?\n' +
+    '    at Database.prepare (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\better-sqlite3@13.0.3\\node_modules\\better-sqlite3\\lib\\methods\\wrappers.js:5:21)\n' +
+    '    at Client_BetterSQLite3._query (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\dialects\\better-sqlite3\\index.js:42:34)\n' +
+    '    at executeQuery (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\internal\\query-executioner.js:37:17)\n' +
+    '    at Client_BetterSQLite3.query (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\client.js:176:12)\n' +
+    '    at C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\transaction.js:380:24\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at trxClient.query (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\transaction.js:375:12)\n' +
+    '    at Runner.query (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\runner.js:147:36)\n' +
+    '    at ensureConnectionCallback (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\internal\\ensure-connection-callback.js:13:17)\n' +
+    '    at Runner.ensureConnection (C:\\Users\\ADMIN\\Documents\\portfolio-frontend\\gethris\\backend\\node_modules\\.pnpm\\knex@3.3.0_better-sqlite3@1_01d87ebfdd71ec9e8e4ef96e4b78fd70\\node_modules\\knex\\lib\\execution\\runner.js:324:20)',
+  raw: { code: 'SQLITE_ERROR', status: 500 }
+}
+  ├ù mengizinkan cuti baru jika masih dalam sisa kuota (74.14ms)
+ ERRORS 
+
+> POST /api/leaves / berhasil membuat pengajuan cuti dengan payload valid
+
+- Expected  - 1
++ Received  + 1
+
+- 201
++ 500
+
+Γä╣ AssertionError: expected 500 to equal 201
+
+ Γüâ at Assert.equal (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+assert@4.2.0_@japa+runner@5.3.0/node_modules/@japa/assert/build/index.js:69:19)
+ Γüâ at ApiResponse.assertStatus (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+api-client@3.2.1_@jap_a5574654e09ce1ea1a9940e28c4296b0/node_modules/@japa/api-client/build/index.js:196:15)
+ Γüâ at Object.executor (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/tests/functional/leaves_store.spec.ts:54:14)
+
+   49 Γöâ        startDate: '2026-09-01',
+   50 Γöâ        endDate: '2026-09-03',
+   51 Γöâ        reason: 'Liburan keluarga',
+   52 Γöâ      })
+   53 Γöâ  
+ Γ¥» 54 Γöâ      response.assertStatus(201)
+   55 Γöâ      response.assertBodyContains({ status: 'success', data: { status: 'pending' } })
+   56 Γöâ  
+   57 Γöâ      const leave = await Leave.query().where('employeeId', employee.id).firstOrFail()
+   58 Γöâ      assert.equal(leave.status, 'pending')
+   59 Γöâ    })
+
+ Γüâ at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+ Γüâ at async #wrapTestInTimeout (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+core@10.4.0/node_modules/@japa/core/build/index.js:680:4)
+ Γüâ at async TestRunner.run (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+core@10.4.0/node_modules/@japa/core/build/index.js:710:4)
+ Γüâ at async Test$1.exec (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+core@10.4.0/node_modules/@japa/core/build/index.js:918:3)
+ Γüâ at async GroupRunner.run (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+core@10.4.0/node_modules/@japa/core/build/index.js:259:4)
+ Γüâ at async Group$1.exec (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+core@10.4.0/node_modules/@japa/core/build/index.js:354:3)
+ Γüâ at async SuiteRunner.run (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+core@10.4.0/node_modules/@japa/core/build/index.js:1100:4)
+[1/3]ΓöÇ
+
+> POST /api/leaves / menolak jika sisa kuota cuti tahun berjalan tidak cukup
+
+- Expected  - 1
++ Received  + 1
+
+- 400
++ 500
+
+Γä╣ AssertionError: expected 500 to equal 400
+
+ Γüâ at Assert.equal (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+assert@4.2.0_@japa+runner@5.3.0/node_modules/@japa/assert/build/index.js:69:19)
+ Γüâ at ApiResponse.assertStatus (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+api-client@3.2.1_@jap_a5574654e09ce1ea1a9940e28c4296b0/node_modules/@japa/api-client/build/index.js:196:15)
+ Γüâ at Object.executor (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/tests/functional/leaves_store.spec.ts:135:14)
+
+   130 Γöâ      })
+   131 Γöâ  
+   132 Γöâ      // vvv DIAGNOSTIK SEMENTARA vvv
+   133 Γöâ      console.log('=== HASIL kuota tidak cukup ===', response.status(), response.body())
+   134 Γöâ  
+ Γ¥» 135 Γöâ      response.assertStatus(400)
+   136 Γöâ      response.assertBodyContains({ status: 'error' })
+   137 Γöâ    })
+   138 Γöâ  
+   139 Γöâ    test('mengizinkan cuti baru jika masih dalam sisa kuota', async ({ client }) => {
+   140 Γöâ      const { employee, user } = await createLoggedInEmployee()
+
+ Γüâ at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+ Γüâ at async #wrapTestInTimeout (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+core@10.4.0/node_modules/@japa/core/build/index.js:680:4)
+ Γüâ at async TestRunner.run (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+core@10.4.0/node_modules/@japa/core/build/index.js:710:4)
+ Γüâ at async Test$1.exec (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+core@10.4.0/node_modules/@japa/core/build/index.js:918:3)
+ Γüâ at async GroupRunner.run (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+core@10.4.0/node_modules/@japa/core/build/index.js:259:4)
+ Γüâ at async Group$1.exec (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+core@10.4.0/node_modules/@japa/core/build/index.js:354:3)
+ Γüâ at async SuiteRunner.run (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+core@10.4.0/node_modules/@japa/core/build/index.js:1100:4)
+[2/3]ΓöÇ
+
+> POST /api/leaves / mengizinkan cuti baru jika masih dalam sisa kuota
+
+- Expected  - 1
++ Received  + 1
+
+- 201
++ 500
+
+ FAILED 
+
+Tests  4 passed, 3 failed (7)
+ Time  549ms
+
+Γä╣ AssertionError: expected 500 to equal 201
+
+ Γüâ at Assert.equal (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+assert@4.2.0_@japa+runner@5.3.0/node_modules/@japa/assert/build/index.js:69:19)
+ Γüâ at ApiResponse.assertStatus (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+api-client@3.2.1_@jap_a5574654e09ce1ea1a9940e28c4296b0/node_modules/@japa/api-client/build/index.js:196:15)
+ Γüâ at Object.executor (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/tests/functional/leaves_store.spec.ts:160:14)
+
+   152 Γöâ        leaveType: 'Tahunan',
+   153 Γöâ        startDate: '2026-10-01',
+   154 Γöâ        endDate: '2026-10-03',
+   155 Γöâ      })
+   156 Γöâ  
+   157 Γöâ      // vvv DIAGNOSTIK SEMENTARA vvv
+   158 Γöâ      console.log('=== HASIL sisa kuota cukup ===', response.status(), response.body())
+   159 Γöâ  
+ Γ¥» 160 Γöâ      response.assertStatus(201)
+   161 Γöâ    })
+   162 Γöâ  })
+
+ Γüâ at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+ Γüâ at async #wrapTestInTimeout (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+core@10.4.0/node_modules/@japa/core/build/index.js:680:4)
+ Γüâ at async TestRunner.run (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+core@10.4.0/node_modules/@japa/core/build/index.js:710:4)
+ Γüâ at async Test$1.exec (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+core@10.4.0/node_modules/@japa/core/build/index.js:918:3)
+ Γüâ at async GroupRunner.run (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+core@10.4.0/node_modules/@japa/core/build/index.js:259:4)
+ Γüâ at async Group$1.exec (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+core@10.4.0/node_modules/@japa/core/build/index.js:354:3)
+ Γüâ at async SuiteRunner.run (C:/Users/ADMIN/Documents/portfolio-frontend/gethris/backend/node_modules/.pnpm/@japa+core@10.4.0/node_modules/@japa/core/build/index.js:1100:4)
+[3/3]ΓöÇ
