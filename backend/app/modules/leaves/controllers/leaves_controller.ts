@@ -1,64 +1,78 @@
 import type { HttpContext } from '@adonisjs/core/http'
+import { DateTime } from 'luxon'
 import Leave from '../models/leave.ts'
+import { createLeaveValidator, updateLeaveStatusValidator } from '../validators/leave_validator.ts'
+import { hasEnoughLeaveQuota } from '../../../utils/leave_util.ts'
+import { successResponse, errorResponse } from '../../../utils/response_formatter.js'
 
 export default class LeavesController {
-  /**
-   * 1. GET /api/leaves
-   * Mengambil semua pengajuan cuti beserta info Karyawan
-   */
   async index({ response }: HttpContext) {
-    // preload('employee') digunakan agar data nama & jabatan karyawan ikut terbawa
     const leaves = await Leave.query().preload('employee')
-
-    return response.json({
-      status: 'success',
-      data: leaves,
-    })
+    return successResponse(response, 'Berhasil mengambil daftar cuti', leaves)
   }
 
-  /**
-   * 2. POST /api/leaves
-   * Karyawan membuat pengajuan cuti baru
-   */
   async store({ request, response }: HttpContext) {
-    const payload = request.only(['employeeId', 'leaveType', 'startDate', 'endDate', 'reason'])
+    const payload = await request.validateUsing(createLeaveValidator)
 
-    // Status otomatis 'pending' saat pertama kali diajukan
+    const startDate = DateTime.fromISO(payload.startDate)
+    const endDate = DateTime.fromISO(payload.endDate)
+
+    // 1. Validasi tanggal: endDate tidak boleh sebelum startDate
+    if (endDate < startDate) {
+      return errorResponse(response, 'Tanggal selesai tidak boleh sebelum tanggal mulai')
+    }
+
+    const requestedDays = endDate.diff(startDate, 'days').days + 1
+
+    // 2. Cek tumpang tindih dengan cuti lain yang masih pending/approved
+    const overlapping = await Leave.query()
+      .where('employeeId', payload.employeeId)
+      .whereIn('status', ['pending', 'approved'])
+      .where('startDate', '<=', endDate.toSQLDate()!)
+      .where('endDate', '>=', startDate.toSQLDate()!)
+      .first()
+
+    if (overlapping) {
+      return errorResponse(response, 'Anda sudah memiliki pengajuan cuti pada rentang tanggal ini')
+    }
+
+    // 3. Cek sisa kuota cuti tahun berjalan (hanya yang sudah approved)
+    const approvedLeaves = await Leave.query()
+      .where('employeeId', payload.employeeId)
+      .where('status', 'approved')
+      .whereRaw('strftime("%Y", start_date) = ?', [startDate.year.toString()])
+
+    const usedLeave = approvedLeaves.reduce((total, leave) => {
+      const days = leave.endDate.diff(leave.startDate, 'days').days + 1
+      return total + days
+    }, 0)
+
+    if (!hasEnoughLeaveQuota(usedLeave, requestedDays)) {
+      return errorResponse(
+        response,
+        `Kuota cuti tidak mencukupi. Sisa kuota: ${12 - usedLeave} hari, diajukan: ${requestedDays} hari`
+      )
+    }
+
     const leave = await Leave.create({
-      ...payload,
+      employeeId: payload.employeeId,
+      leaveType: payload.leaveType,
+      reason: payload.reason,
+      startDate,
+      endDate,
       status: 'pending',
     })
 
-    return response.created({
-      status: 'success',
-      message: 'Pengajuan cuti berhasil dibuat',
-      data: leave,
-    })
+    return successResponse(response, 'Pengajuan cuti berhasil dibuat', leave, 201)
   }
 
-  /**
-   * 3. PATCH /api/leaves/:id/status
-   * HR / Admin menyetujui (approved) atau menolak (rejected) cuti
-   */
   async updateStatus({ params, request, response }: HttpContext) {
     const leave = await Leave.findOrFail(params.id)
-    const { status } = request.only(['status'])
-
-    // Validasi status hanya boleh 'approved' atau 'rejected'
-    if (!['approved', 'rejected'].includes(status)) {
-      return response.badRequest({
-        status: 'error',
-        message: 'Status harus berisi approved atau rejected',
-      })
-    }
+    const { status } = await request.validateUsing(updateLeaveStatusValidator)
 
     leave.status = status
     await leave.save()
 
-    return response.json({
-      status: 'success',
-      message: `Status cuti berhasil diperbarui menjadi ${status}`,
-      data: leave,
-    })
+    return successResponse(response, `Status cuti berhasil diperbarui menjadi ${status}`, leave)
   }
 }
