@@ -1,6 +1,7 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import type { AccessToken } from '@adonisjs/auth/access_tokens'
 import User from '#models/user'
+import { signupValidator, loginValidator } from '../../../validators/user.ts'
 
 export default class AuthController {
   /**
@@ -8,13 +9,18 @@ export default class AuthController {
    * Registrasi User Baru
    */
   async register({ request, response }: HttpContext) {
+    const payload = await request.validateUsing(signupValidator)
+
     // 'role' SENGAJA tidak diambil dari input publik agar user tidak bisa
     // mendaftar langsung sebagai admin/hr. Role default selalu 'employee';
     // kenaikan role hanya boleh dilakukan lewat endpoint admin terpisah.
-    const payload = request.only(['fullName', 'email', 'password', 'employeeId'])
-
-    // Buat user baru di database
-    const user = await User.create({ ...payload, role: 'employee' })
+    const user = await User.create({
+      fullName: payload.fullName,
+      email: payload.email,
+      password: payload.password,
+      employeeId: payload.employeeId ?? null,
+      role: 'employee',
+    })
 
     // Generate Access Token seketika setelah register
     const token = await User.accessTokens.create(user)
@@ -34,7 +40,7 @@ export default class AuthController {
    * Login & Dapatkan Access Token
    */
   async login({ request, response }: HttpContext) {
-    const { email, password } = request.only(['email', 'password'])
+    const { email, password } = await request.validateUsing(loginValidator)
 
     // Verifikasi email & password
     const user = await User.verifyCredentials(email, password)

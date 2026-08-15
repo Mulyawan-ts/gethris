@@ -10,6 +10,7 @@ test.group('Auth', (group) => {
       fullName: 'Andi Pratama',
       email: 'andi@company.com',
       password: 'password123',
+      passwordConfirmation: 'password123',
     })
 
     response.assertStatus(201)
@@ -32,6 +33,7 @@ test.group('Auth', (group) => {
       fullName: 'Penyusup',
       email: 'penyusup@company.com',
       password: 'password123',
+      passwordConfirmation: 'password123',
       role: 'admin', // mencoba menyisipkan role admin
     })
 
@@ -46,6 +48,7 @@ test.group('Auth', (group) => {
       fullName: 'Budi Setiawan',
       email: 'budi@company.com',
       password: 'password123',
+      passwordConfirmation: 'password123',
     })
 
     response.assertStatus(201)
