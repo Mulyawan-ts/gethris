@@ -1,27 +1,46 @@
 import app from '@adonisjs/core/services/app'
-import { type HttpContext, ExceptionHandler } from '@adonisjs/core/http'
+import { HttpContext, ExceptionHandler } from '@adonisjs/core/http'
+import { errors as vineErrors } from '@vinejs/vine'
+import { errors as authErrors } from '@adonisjs/auth'
+import { errors as limiterErrors } from '@adonisjs/limiter'
 
 export default class HttpExceptionHandler extends ExceptionHandler {
-  /**
-   * In debug mode, the exception handler will display verbose errors
-   * with pretty printed stack traces.
-   */
   protected debug = !app.inProduction
 
-  /**
-   * The method is used for handling errors and returning
-   * response to the client
-   */
   async handle(error: unknown, ctx: HttpContext) {
+    const { response } = ctx
+
+    // 1. Error Validasi VineJS (Status 422)
+    if (error instanceof vineErrors.E_VALIDATION_ERROR) {
+      return response.status(422).send({
+        status: false,
+        message: 'Validasi data gagal',
+        errors: error.messages,
+      })
+    }
+
+    // 2. Error Autentikasi / Token Invalid (Status 401)
+    if (error instanceof authErrors.E_UNAUTHORIZED_ACCESS) {
+      return response.status(401).send({
+        status: false,
+        message: 'Akses tidak diizinkan. Token tidak valid atau kedaluwarsa.',
+        errors: null,
+      })
+    }
+
+    // 3. Error Rate Limit Exceeded (Status 429)
+    if (error instanceof limiterErrors.E_TOO_MANY_REQUESTS) {
+      return response.status(429).send({
+        status: false,
+        message: 'Terlalu banyak request. Silakan coba beberapa saat lagi.',
+        errors: null,
+      })
+    }
+
+    // 4. Fallback Error Handler Bawaan AdonisJS (404, 500, dll)
     return super.handle(error, ctx)
   }
 
-  /**
-   * The method is used to report error to the logging service or
-   * the a third party error monitoring service.
-   *
-   * @note You should not attempt to send a response from this method.
-   */
   async report(error: unknown, ctx: HttpContext) {
     return super.report(error, ctx)
   }
