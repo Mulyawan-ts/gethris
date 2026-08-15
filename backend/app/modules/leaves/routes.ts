@@ -5,15 +5,14 @@ const LeavesController = () => import('./controllers/leaves_controller.ts')
 export function leaveRoutes() {
   router
     .group(() => {
-      // GET /api/leaves -> Ambil semua daftar cuti
       router.get('/', [LeavesController, 'index'])
-
-      // POST /api/leaves -> Buat pengajuan cuti baru
       router.post('/', [LeavesController, 'store'])
-
-      // PATCH /api/leaves/:id/status -> Approve / Reject pengajuan cuti
-      router.patch('/:id/status', [LeavesController, 'updateStatus'])
     })
     .prefix('/api/leaves')
-    .use(middleware.auth()) // add auth
+    .use(middleware.auth())
+
+  router
+    .patch('/:id/status', [LeavesController, 'updateStatus'])
+    .prefix('/api/leaves')
+    .use([middleware.auth(), middleware.role(['admin', 'hr'])])
 }
