@@ -8,18 +8,7 @@ import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
 export class AuthAccessTokenSchema extends BaseModel {
-  static $columns = [
-    'abilities',
-    'createdAt',
-    'expiresAt',
-    'hash',
-    'id',
-    'lastUsedAt',
-    'name',
-    'tokenableId',
-    'type',
-    'updatedAt',
-  ] as const
+  static $columns = ['abilities', 'createdAt', 'expiresAt', 'hash', 'id', 'lastUsedAt', 'name', 'tokenableId', 'type', 'updatedAt'] as const
   $columns = AuthAccessTokenSchema.$columns
   @column()
   declare abilities: string
@@ -44,17 +33,7 @@ export class AuthAccessTokenSchema extends BaseModel {
 }
 
 export class EmployeeSchema extends BaseModel {
-  static $columns = [
-    'createdAt',
-    'email',
-    'id',
-    'joinDate',
-    'name',
-    'nip',
-    'position',
-    'status',
-    'updatedAt',
-  ] as const
+  static $columns = ['createdAt', 'email', 'id', 'joinDate', 'name', 'nip', 'position', 'status', 'updatedAt'] as const
   $columns = EmployeeSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
@@ -77,17 +56,7 @@ export class EmployeeSchema extends BaseModel {
 }
 
 export class LeafSchema extends BaseModel {
-  static $columns = [
-    'createdAt',
-    'employeeId',
-    'endDate',
-    'id',
-    'leaveType',
-    'reason',
-    'startDate',
-    'status',
-    'updatedAt',
-  ] as const
+  static $columns = ['createdAt', 'employeeId', 'endDate', 'id', 'leaveType', 'reason', 'startDate', 'status', 'updatedAt'] as const
   $columns = LeafSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
@@ -109,17 +78,19 @@ export class LeafSchema extends BaseModel {
   declare updatedAt: DateTime | null
 }
 
+export class RateLimitSchema extends BaseModel {
+  static $columns = ['expire', 'key', 'points'] as const
+  $columns = RateLimitSchema.$columns
+  @column()
+  declare expire: bigint | number | null
+  @column({ isPrimary: true })
+  declare key: string
+  @column()
+  declare points: number
+}
+
 export class UserSchema extends BaseModel {
-  static $columns = [
-    'createdAt',
-    'email',
-    'employeeId',
-    'fullName',
-    'id',
-    'password',
-    'role',
-    'updatedAt',
-  ] as const
+  static $columns = ['createdAt', 'email', 'employeeId', 'fullName', 'id', 'password', 'role', 'updatedAt'] as const
   $columns = UserSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
