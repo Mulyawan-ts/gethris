@@ -20,6 +20,15 @@ export default class Employee extends BaseModel {
   declare position: string
 
   @column()
+  declare department: string | null       // baru
+
+  @column()
+  declare salary: number | null           // baru
+
+  @column()
+  declare phoneNumber: string | null      // baru — cocok ke kolom phone_number
+
+  @column()
   declare status: string
 
   @column.date()
@@ -31,7 +40,6 @@ export default class Employee extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
-  // Relasi: 1 Karyawan bisa punya banyak Pengajuan Cuti
   @hasMany(() => Leave)
   declare leaves: HasMany<typeof Leave>
 }

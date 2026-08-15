@@ -33,10 +33,12 @@ export class AuthAccessTokenSchema extends BaseModel {
 }
 
 export class EmployeeSchema extends BaseModel {
-  static $columns = ['createdAt', 'email', 'id', 'joinDate', 'name', 'nip', 'position', 'status', 'updatedAt'] as const
+  static $columns = ['createdAt', 'department', 'email', 'id', 'joinDate', 'name', 'nip', 'phoneNumber', 'position', 'salary', 'status', 'updatedAt'] as const
   $columns = EmployeeSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
+  @column()
+  declare department: string | null
   @column()
   declare email: string
   @column({ isPrimary: true })
@@ -48,7 +50,11 @@ export class EmployeeSchema extends BaseModel {
   @column()
   declare nip: string
   @column()
+  declare phoneNumber: string | null
+  @column()
   declare position: string
+  @column()
+  declare salary: number | null
   @column()
   declare status: string | null
   @column.dateTime({ autoCreate: true, autoUpdate: true })

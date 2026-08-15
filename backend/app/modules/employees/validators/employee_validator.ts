@@ -5,22 +5,19 @@ import vine from '@vinejs/vine'
  */
 export const createEmployeeValidator = vine.compile(
   vine.object({
-    fullName: vine.string().trim().minLength(3).maxLength(255),
+    name: vine.string().trim().minLength(3).maxLength(255),
     email: vine.string().email().trim(),
     phoneNumber: vine.string().trim().optional(),
     position: vine.string().trim(),
     department: vine.string().trim(),
     salary: vine.number().positive(),
-    joinDate: vine.string().trim(), // Format tanggal string: YYYY-MM-DD
+    joinDate: vine.string().trim(),
   })
 )
 
-/**
- * Validator untuk Update Data Karyawan
- */
 export const updateEmployeeValidator = vine.compile(
   vine.object({
-    fullName: vine.string().trim().minLength(3).maxLength(255).optional(),
+    name: vine.string().trim().minLength(3).maxLength(255).optional(),
     email: vine.string().email().trim().optional(),
     phoneNumber: vine.string().trim().optional(),
     position: vine.string().trim().optional(),
