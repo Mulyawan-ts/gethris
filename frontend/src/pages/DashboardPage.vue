@@ -4,7 +4,9 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
       <div>
         <h4 class="fw-bold mb-1">Dashboard HRIS</h4>
-        <p class="text-muted small mb-0">Selamat datang kembali, Admin! Berikut ringkasan hari ini.</p>
+        <p class="text-muted small mb-0">
+          Selamat datang kembali, Admin! Berikut ringkasan hari ini.
+        </p>
       </div>
       <button class="btn btn-primary d-flex align-items-center gap-2">
         <i class="bi bi-download"></i> Export Laporan
@@ -75,7 +77,9 @@
       <!-- Tabel Absensi Terbaru -->
       <div class="col-12 col-lg-8">
         <div class="card border-0 shadow-sm">
-          <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
+          <div
+            class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center"
+          >
             <h6 class="fw-bold mb-0">Kehadiran Terbaru Hari Ini</h6>
             <a href="#" class="text-decoration-none small">Lihat Semua</a>
           </div>
