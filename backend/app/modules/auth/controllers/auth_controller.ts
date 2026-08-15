@@ -8,10 +8,13 @@ export default class AuthController {
    * Registrasi User Baru
    */
   async register({ request, response }: HttpContext) {
-    const payload = request.only(['fullName', 'email', 'password', 'role', 'employeeId'])
+    // 'role' SENGAJA tidak diambil dari input publik agar user tidak bisa
+    // mendaftar langsung sebagai admin/hr. Role default selalu 'employee';
+    // kenaikan role hanya boleh dilakukan lewat endpoint admin terpisah.
+    const payload = request.only(['fullName', 'email', 'password', 'employeeId'])
 
     // Buat user baru di database
-    const user = await User.create(payload)
+    const user = await User.create({ ...payload, role: 'employee' })
 
     // Generate Access Token seketika setelah register
     const token = await User.accessTokens.create(user)
