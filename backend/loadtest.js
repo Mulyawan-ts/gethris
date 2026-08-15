@@ -4,9 +4,9 @@ import { check, sleep } from 'k6'
 // Konfigurasi pengujian
 export const options = {
   stages: [
-    { duration: '5s', target: 20 },  // Naik ke 20 user dalam 5 detik awal
+    { duration: '5s', target: 20 }, // Naik ke 20 user dalam 5 detik awal
     { duration: '10s', target: 100 }, // Naik lagi ke 100 user dalam 10 detik
-    { duration: '5s', target: 0 },   // Turun kembali ke 0 user (selesai)
+    { duration: '5s', target: 0 }, // Turun kembali ke 0 user (selesai)
   ],
 }
 
@@ -15,7 +15,8 @@ export default function () {
   const params = {
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer oat_Mg.WVRMNmJxci1KdURpT0hwZzQ2eTg1WXJRX3VjU1V0NGQtRTZId3pZWTQ0NjU1MjY3Ng',
+      'Authorization':
+        'Bearer oat_Mg.WVRMNmJxci1KdURpT0hwZzQ2eTg1WXJRX3VjU1V0NGQtRTZId3pZWTQ0NjU1MjY3Ng',
     },
   }
 

@@ -20,13 +20,13 @@ export default class Employee extends BaseModel {
   declare position: string
 
   @column()
-  declare department: string | null       // baru
+  declare department: string | null // baru
 
   @column()
-  declare salary: number | null           // baru
+  declare salary: number | null // baru
 
   @column()
-  declare phoneNumber: string | null      // baru — cocok ke kolom phone_number
+  declare phoneNumber: string | null // baru — cocok ke kolom phone_number
 
   @column()
   declare status: string

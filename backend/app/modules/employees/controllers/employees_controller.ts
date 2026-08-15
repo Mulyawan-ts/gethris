@@ -3,7 +3,10 @@ import { DateTime } from 'luxon'
 import Employee from '../models/employee.ts'
 import { generateNk } from '../../../utils/nk_generator.ts'
 import { successResponse, errorResponse } from '../../../utils/response_formatter.js'
-import { createEmployeeValidator, updateEmployeeValidator } from '../validators/employee_validator.js'
+import {
+  createEmployeeValidator,
+  updateEmployeeValidator,
+} from '../validators/employee_validator.js'
 import cache from '@adonisjs/cache/services/main'
 
 export default class EmployeesController {
