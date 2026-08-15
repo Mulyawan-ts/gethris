@@ -33,24 +33,48 @@ export default class EmployeesController {
   public async store({ request, response }: HttpContext) {
     const payload = await request.validateUsing(createEmployeeValidator)
 
-    // Generate NIP
-    const nip = await generateNk(payload.joinDate)
-
     // Konversi string joinDate ke DateTime
     const joinDate = DateTime.fromISO(payload.joinDate)
 
-    const employee = await Employee.create({
-      ...payload,
-      nip,
-      joinDate,
-    })
+    try {
+      // Generate NIP (sudah dicek unik di dalam generateNk, tapi race condition
+      // masih mungkin terjadi kalau dua request nyaris bersamaan)
+      const nip = await generateNk(payload.joinDate)
 
-    // Invalidate Cache saat ada karyawan baru
-    await cache.delete({ key: 'employees_list_all' })
+      const employee = await Employee.create({
+        ...payload,
+        nip,
+        joinDate,
+      })
 
-    return successResponse(response, 'Karyawan berhasil ditambahkan', employee, 201)
+      // Invalidate Cache saat ada karyawan baru
+      await cache.delete({ key: 'employees_list_all' })
+
+      return successResponse(response, 'Karyawan berhasil ditambahkan', employee, 201)
+    } catch (error) {
+      // Tangkap error unique constraint dari DB (nip atau email duplikat)
+      // yang lolos dari pengecekan generateNk karena race condition,
+      // atau email yang sudah dipakai karyawan lain.
+      const hasSqliteConstraintCode =
+        error instanceof Error &&
+        'code' in error &&
+        (error as { code?: string }).code === 'SQLITE_CONSTRAINT'
+
+      const hasUniqueMessage = error instanceof Error && error.message.includes('UNIQUE')
+
+      if (hasSqliteConstraintCode || hasUniqueMessage) {
+        return errorResponse(
+          response,
+          'Gagal menambahkan karyawan: NIP atau email sudah digunakan, coba lagi',
+          null,
+          409
+        )
+      }
+
+      // Error lain yang tidak terduga, biarkan exception handler global menanganinya
+      throw error
+    }
   }
-
   /**
    * GET /api/employees/:id
    */
